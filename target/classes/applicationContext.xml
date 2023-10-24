@@ -20,10 +20,27 @@
     <!--aop config-->
     <bean id="methodAspect" class="com.kenny.spring.aop.aspect.MethodAspect"/>
     <aop:config>
-        <aop:pointcut id="pointcut" expression="execution(public * com.kenny..*.*(..))"/>
-        <aop:aspect ref="methodAspect">
-            <aop:before method="printExecutionTime" pointcut-ref="pointcut"/>
-        </aop:aspect>
+        <!--defines a pointcut named "pointcut". The expression attribute specifies the pattern for the join points (methods) to be intercepted.-->
+        <!--In this case, the pointcut captures all public methods (execution(public *)) within the package com.kenny and its sub-packages (com.kenny..*.*(..)).-->
+<!--        <aop:pointcut id="pointcut" expression="execution(public * com.kenny..*.*(..))"/>-->
+<!--        // most common use in real world-->
+        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*(..))"/>
+<!--        <aop:pointcut id="pointcut" expression="execution(String com.kenny..*Service.*(..))"/>-->
+<!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.create*(..))"/>-->
+<!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*())"/>-->
+<!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*(*,*))"/>-->
+<!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*(String,*))"/>-->
 
+        <!--defines an aspect that references the "methodAspect" bean through the ref attribute. The aspect encapsulates the advice to be applied.-->
+        <aop:aspect ref="methodAspect">
+            <!--specifies the advice type as "before", indicating that the advice should be executed before the target methods are invoked.
+            The method attribute specifies the name of the method (printExecutionTime) in the "methodAspect" bean
+            that will be executed as the advice. The pointcut-ref attribute references the "pointcut" defined earlier,
+            indicating that the advice should be applied to join points matched by that pointcut.-->
+            <aop:before method="printExecutionTime" pointcut-ref="pointcut"/>
+            <aop:after-returning method="doAfterReturning" returning="returning" pointcut-ref="pointcut"/>
+            <aop:after method="doAfter" pointcut-ref="pointcut"/>
+            <aop:after-throwing method="doAfterThrowing" throwing="throwable" pointcut-ref="pointcut"/>
+        </aop:aspect>
     </aop:config>
 </beans>
