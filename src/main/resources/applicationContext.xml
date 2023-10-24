@@ -22,14 +22,14 @@
     <aop:config>
         <!--defines a pointcut named "pointcut". The expression attribute specifies the pattern for the join points (methods) to be intercepted.-->
         <!--In this case, the pointcut captures all public methods (execution(public *)) within the package com.kenny and its sub-packages (com.kenny..*.*(..)).-->
-<!--        <aop:pointcut id="pointcut" expression="execution(public * com.kenny..*.*(..))"/>-->
-<!--        // most common use in real world-->
+        <!--        <aop:pointcut id="pointcut" expression="execution(public * com.kenny..*.*(..))"/>-->
+        <!--        // most common use in real world-->
         <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*(..))"/>
-<!--        <aop:pointcut id="pointcut" expression="execution(String com.kenny..*Service.*(..))"/>-->
-<!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.create*(..))"/>-->
-<!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*())"/>-->
-<!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*(*,*))"/>-->
-<!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*(String,*))"/>-->
+        <!--        <aop:pointcut id="pointcut" expression="execution(String com.kenny..*Service.*(..))"/>-->
+        <!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.create*(..))"/>-->
+        <!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*())"/>-->
+        <!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*(*,*))"/>-->
+        <!--        <aop:pointcut id="pointcut" expression="execution(* com.kenny..*Service.*(String,*))"/>-->
 
         <!--defines an aspect that references the "methodAspect" bean through the ref attribute. The aspect encapsulates the advice to be applied.-->
         <aop:aspect ref="methodAspect">

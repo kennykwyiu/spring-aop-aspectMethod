@@ -9,5 +9,8 @@
         <module name="aop" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="s01" target="1.5" />
+    </bytecodeTargetLevel>
   </component>
 </project>

@@ -9,9 +9,9 @@ public class UserService {
     private UserDao userDao;
 
     public void createUser(){
-        if (1==1) {
-            throw new RuntimeException("user already existed");
-        }
+//        if (1==1) {
+//            throw new RuntimeException("user already existed");
+//        }
         System.out.println("execute employee creation logic");
         userDao.insert();
     }
